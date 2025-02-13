@@ -21,17 +21,18 @@ export class MovieController {
 
   @Post()
   postMovie(
-    @Body('title') title : string
+    @Body() createMovieDto: CreateMovieDto
   ){
-    return this.movieService.createMovie(title);
+    return this.movieService.createMovie(createMovieDto
+    );
   }
 
   @Patch(":id")
   patchMovie(
     @Param('id') id : string,
-    @Body('title') title: string
+    @Body() updateMovieDto: UpdateMovieDto
   ){
-    return this.movieService.updateMovie(+id, title); 
+    return this.movieService.updateMovie(+id, updateMovieDto);
   }
 
   @Delete(":id")
